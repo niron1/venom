@@ -312,13 +312,15 @@ export async function create(
         try {
           if (interFace.mode === InterfaceMode.MAIN) {
             interfaceChange && interfaceChange('chatsAvailable', session);
-            spinnies.add(`whatzapp-mode-main-${session}`, {
-              text: 'opening main page...'
-            });
 
-            spinnies.succeed(`whatzapp-mode-main-${session}`, {
-              text: 'Successfully main page!'
-            });
+            // gizim put in comment because it spams the console
+            // spinnies.add(`whatzapp-mode-main-${session}`, {
+            //   text: 'opening main page...'
+            // });
+
+            // spinnies.succeed(`whatzapp-mode-main-${session}`, {
+            //   text: 'Successfully main page!'
+            // });
 
             spinnies.succeed(`whatzapp-mode-syncing-${session}`, {
               text: 'Successfully sync!'
