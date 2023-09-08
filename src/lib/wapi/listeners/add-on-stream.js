@@ -10,8 +10,24 @@ export function addOnStream() {
 
   window.WAPI.onInterfaceChange = (callback) => {
     window.WAPI.waitForStore('Stream', () => {
-      window.Store.Stream.on('change:info change:displayInfo change:mode', () =>
-        callback(getData())
+      console.log(
+        'gizim',
+        4466204,
+        'waitForStore - here we were able to detect disconnections and recover from',
+        { initialized },
+        { getData: getData() }
+      );
+
+      window.Store.Stream.on(
+        'change:info change:displayInfo change:mode',
+        () =>
+          console.log(
+            'gizim',
+            4466264,
+            'onInterfaceChange - here we were able to detect disconnections and recover from',
+            { initialized },
+            { getData: getData() }
+          ) || callback(getData())
       );
       if (initialized === false) {
         initialized = true;
