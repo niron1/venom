@@ -50,6 +50,7 @@ const puppeteerConfig = {
     '--use-mock-keychain',
     '--enable-blink-features=IdleDetection',
     '--export-tagged-pdf',
+    '--mute-audio',
     'about:blank'
   ]
 };
