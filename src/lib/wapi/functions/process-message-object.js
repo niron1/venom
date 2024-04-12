@@ -3,6 +3,8 @@ export async function processMessageObj(
   includeMe,
   includeNotifications
 ) {
+  console.log('gizim', 4072349, { messageObj });
+
   if (messageObj.isNotification) {
     if (includeNotifications) {
       return await WAPI._serializeMessageObj(messageObj);

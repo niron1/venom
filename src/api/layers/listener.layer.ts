@@ -94,6 +94,8 @@ export class ListenerLayer extends ProfileLayer {
           window.onUnreadMessage(e);
         });
         window.WAPI.waitNewMessages(false, (data: any) => {
+          // console.log('gizim', 6514871, { data });
+
           data.forEach((message: any) => {
             window.onMessage(message);
           });
@@ -155,6 +157,8 @@ export class ListenerLayer extends ProfileLayer {
    */
   public async onAnyMessage(fn: (message: Message) => void) {
     this.listenerEmitter.on(ExposedFn.OnAnyMessage, (msg) => {
+      console.log('gizim', 7190357, { msg });
+
       fn(msg);
     });
 
@@ -173,6 +177,9 @@ export class ListenerLayer extends ProfileLayer {
    */
   public async onStateChange(fn: (state: SocketState) => void) {
     this.listenerEmitter.on(ExposedFn.onStateChange, fn);
+    this.listenerEmitter.on(ExposedFn.onStateChange, (state) => {
+      // console.log('gizim', 1891872, { state });
+    });
 
     return {
       dispose: () => {
@@ -261,6 +268,11 @@ export class ListenerLayer extends ProfileLayer {
    */
   public async onMessage(fn: (message: Message) => void) {
     this.listenerEmitter.on(ExposedFn.OnMessage, (state: Message) => {
+      // console.log('gizim', 8641210, {
+      //   listenerEmitter: this.listenerEmitter,
+      //   state
+      // });
+
       if (!callonMessage.checkObj(state.from, state.id)) {
         callonMessage.addObjects(state.from, state.id);
         fn(state);

@@ -8,6 +8,8 @@ enum ExposedFn {
  * Exposes [OnMessage] function
  */
 (window as any).WAPI.waitNewMessages(false, (data: any[]) => {
+  console.log('gizim', 4784183, { data });
+
   data.forEach((message: any) => {
     window[ExposedFn.OnMessage](message);
   });
